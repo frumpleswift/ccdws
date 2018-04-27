@@ -57,31 +57,43 @@ public class CCDWSSoapService implements CCDWSSoap {
         @WebParam(name = "CCDWSQueryRequest", targetNamespace = "http://cadata.ca.state.gov/CCDWS")
         String ccdwsQueryRequest) { int i= 5;};
 
-    /**
-     * 
-     * @param xmlIn
-     * @return
-     *     returns java.lang.String
-     */
+ /**
+ *   *
+ *        * @param xmlIn
+ *             * @return
+ *                  *     returns java.lang.String
+ *                       */
     public String ccdwsRunPkg(
         @WebParam(name = "XMLIn", targetNamespace = "http://cadata.ca.state.gov/CCDWS")
-        String xmlIn) { 
-try {
-Context initContext = new InitialContext();
-Context envContext  = (Context)initContext.lookup("java:/comp/env");
-DataSource ds = (DataSource)envContext.lookup("jdbc/myoracle");
-Connection conn = ds.getConnection();
+        String xmlIn) {
+        try {
+                Context initContext = new InitialContext();
+                Context envContext  = (Context)initContext.lookup("java:/comp/env");
+                DataSource ds = (DataSource)envContext.lookup("jdbc/myoracle");
+                Connection conn = ds.getConnection();
+ 
+                Clob clobIn = conn.createClob();
+ 
+                clobIn.setString(1,xmlIn);
+ 
+                CallableStatement call = conn.prepareCall("BEGIN ccdws.run_pkg(?,?,'Y'); END;");
+ 
+                call.setClob(1,clobIn);
+ 
+                call.registerOutParameter(2,Types.CLOB);
+ 
+                call.execute();
+ 
+                return call.getClob(2).getSubString(0,(int)call.getClob(2).length());
+ 
+                //return "ccdwsRunPkg return";
+           }
+           catch (Exception e) {
+             
+           	return e.getMessage();
+           }
+       };
 
-return "ccdwsRunPkg return"; 
-
-}
-catch (Exception e) {
-
-	return e.getMessage();
-
-}
-
-};
 
     /**
      * 
