@@ -3,11 +3,11 @@
 		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
 
-<resource-ref>
+<resource-env-ref>
  <description>Oracle Datasource example</description>
- <res-ref-name>jdbc/ccdws_user</res-ref-name>
- <res-type>javax.sql.DataSource</res-type>
+ <resource-env-ref-name>jdbc/ccdws_user</resource-env-ref-name>
+ <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
  <res-auth>Container</res-auth>
-</resource-ref>
+</resource-env-ref>
 
 </web-app>

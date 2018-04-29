@@ -1,5 +1,5 @@
 <Context>
-<Resource name="jdbc/myoracle" auth="Container"
+<Resource name="jdbc/ccdws_user" auth="Container"
               type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
               url="jdbc:oracle:thin:@${env.DB_HOST:product-db}:${env.DB_PORT:product-db}:${env.DB_SID:product-db}"
               username="${env.DB_USERNAME:product-db}" password="${env.DB_PASSWORD:product-db}" maxActive="20" maxIdle="10"
