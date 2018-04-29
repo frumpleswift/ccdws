@@ -89,7 +89,8 @@ public class CCDWSSoapService implements CCDWSSoap {
                 //return "ccdwsRunPkg return";
            }
            catch (Exception e) {
-             
+            
+		e.printStackTrace(); 
            	return e.getMessage();
            }
        };
