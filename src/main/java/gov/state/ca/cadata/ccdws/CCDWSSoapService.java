@@ -69,7 +69,7 @@ public class CCDWSSoapService implements CCDWSSoap {
         try {
                 Context initContext = new InitialContext();
                 Context envContext  = (Context)initContext.lookup("java:/comp/env");
-                DataSource ds = (DataSource)envContext.lookup("jdbc/myoracle");
+                DataSource ds = (DataSource)envContext.lookup("jdbc/ccdws_user");
                 Connection conn = ds.getConnection();
  
                 Clob clobIn = conn.createClob();
