@@ -7,7 +7,6 @@
  <description>Oracle Datasource example</description>
  <resource-env-ref-name>jdbc/ccdws_user</resource-env-ref-name>
  <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
- <res-auth>Container</res-auth>
 </resource-env-ref>
 
 </web-app>
