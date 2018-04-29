@@ -68,8 +68,8 @@ public class CCDWSSoapService implements CCDWSSoap {
         String xmlIn) {
         try {
                 Context initContext = new InitialContext();
-                Context envContext  = (Context)initContext.lookup("java:/comp/env");
-                DataSource ds = (DataSource)envContext.lookup("jdbc/ccdws_user");
+                //Context envContext  = (Context)initContext.lookup("java:/comp/env");
+                DataSource ds = (DataSource)initContext.lookup("java:/comp/env/jdbc/ccdws_user");
                 Connection conn = ds.getConnection();
  
                 Clob clobIn = conn.createClob();
