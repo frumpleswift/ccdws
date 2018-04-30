@@ -1,13 +1,3 @@
-<!--
-<Context>
-<Resource name="jdbc/ccdws_user" auth="Container"
-              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@${env.DB_HOST:product-db}:${env.DB_PORT:product-db}:${env.DB_SID:product-db}"
-              username="${env.DB_USERNAME:product-db}" password="${env.DB_PASSWORD:product-db}" maxActive="20" maxIdle="10"
-              maxWait="-1"/> 
-</Context>
--->
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- This is an unmanaged datasource. It should be used for proofs of concept 
         or testing only. It uses H2, an in memory database that ships with JBoss 
