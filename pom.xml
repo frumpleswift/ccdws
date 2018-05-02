@@ -32,14 +32,6 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-	        <!-- ojdbc7.jar example -->
-        	<dependency>
-	            <groupId>com.oracle</groupId>
-        	    <artifactId>ojdbc7</artifactId>
-	            <version>12.1.0</version>
-		    <scope>system</scope>
-		    <systemPath>${project.basedir}/src/main/resources/ojdbc7.jar</systemPath>
-        	</dependency>
 	</dependencies>
 
 	<build>
