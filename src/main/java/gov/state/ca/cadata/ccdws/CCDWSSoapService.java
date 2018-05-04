@@ -83,8 +83,12 @@ public class CCDWSSoapService implements CCDWSSoap {
                 call.registerOutParameter(2,Types.CLOB);
  
                 call.execute();
- 
-                return call.getClob(2).getSubString(0,(int)call.getClob(2).length());
+
+		Clob clobOut = call.getClob(2);
+
+		String returnString = clobOut.getSubString(1,(int)clobOUt.length()); 
+
+                return returnString
  
                 //return "ccdwsRunPkg return";
            }
