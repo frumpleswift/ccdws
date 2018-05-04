@@ -119,7 +119,41 @@ public class CCDWSSoapService implements CCDWSSoap {
         @WebParam(name = "XMLIn", targetNamespace = "http://cadata.ca.state.gov/CCDWS")
         String xmlIn,
         @WebParam(name = "byteIn", targetNamespace = "http://cadata.ca.state.gov/CCDWS")
-        byte[] byteIn) { return "ccdwsRunLobPkg return"; };
+        byte[] byteIn) { 
+
+	try {
+                Context initContext = new InitialContext();
+                Context envContext  = (Context)initContext.lookup("java:/comp/env");
+                DataSource ds = (DataSource)initContext.lookup("java:jboss/datasources/ccdws_user");
+                Connection conn = ds.getConnection();
+                
+                Clob clobIn = conn.createClob();
+                Blob blobIn = conn.createBlob();
+
+                clobIn.setString(1,xmlIn);
+		blobIn.setBytes(1,byteIn);
+                
+                CallableStatement call = conn.prepareCall("BEGIN ccdws.run_lob_pkg(?,?,?); END;");
+                
+                call.setClob(1,clobIn);
+		call.setBlob(2,blobIn);
+                
+                call.registerOutParameter(3,Types.CLOB);
+                
+                call.execute();
+                
+		Clob clobOut = call.getClob(3);
+                
+		String returnString = clobOut.getSubString(1,(int)clobOut.length());
+                
+		return returnString;
+                                                                                                                                           }
+                                                                                                                                         catch (Exception e) {
+                     e.printStackTrace();
+                     return e.getMessage();
+         
+	}
+ };
 
     /**
      * 
