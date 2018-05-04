@@ -86,7 +86,7 @@ public class CCDWSSoapService implements CCDWSSoap {
 
 		Clob clobOut = call.getClob(2);
 
-		String returnString = clobOut.getSubString(1,(int)clobOUt.length()); 
+		String returnString = clobOut.getSubString(1,(int)clobOut.length()); 
 
                 return returnString;
  
