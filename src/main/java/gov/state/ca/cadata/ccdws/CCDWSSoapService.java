@@ -123,7 +123,6 @@ public class CCDWSSoapService implements CCDWSSoap {
 
 	try {
                 Context initContext = new InitialContext();
-                Context envContext  = (Context)initContext.lookup("java:/comp/env");
                 DataSource ds = (DataSource)initContext.lookup("java:jboss/datasources/ccdws_user");
                 Connection conn = ds.getConnection();
                 
